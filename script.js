@@ -1,47 +1,46 @@
+// const variables
+const regex=/^[0-9]{1,14}$/  
+const smallLetter='abcdefghijklmnopqrstuvwxyz'
+const capitalLetter='ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+const number = "0123456789"
+const symbol='!@#$%&*{}[]'
+// password generator
 
-function pass_Genereator(){
+const passwordGenerator=()=>{
    
 let password = [];
-let randomLength = Math.floor(Math.random()*(11-8)) + 8;
-const charSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*{}[]"
-for(let i=0; i < randomLength; i++){
-
-    password.push(charSet.charAt(Math.floor(Math.random()*charSet.length-1)));
+let randomLength = Math.floor(Math.random()*(4,2))+2;
+for(let i=0;i<randomLength;i++){
+ password.push(subPassword(smallLetter,25) + subPassword(capitalLetter,25)+
+ subPassword(number,10)+subPassword(symbol,11));
 }
-console.log("The random password with length ",randomLength," is: ",password.join(''));
+console.log(`The random password with length ${password.join('').length} is: ${password.join('')}`);
 }
 
-
-// the factorial is nice one
-
-
-// it best to use let rather than var, do u know about the difference between var and let
-
-
-
-function febo_Generator(){
-    let febo_seq = [0,1];
-    let check = true;
-    var num = prompt("Generating febonacci up to?");
-    while(check){
-    if(febo_seq[febo_seq.length - 1] <= num){
-        febo_seq.push(febo_seq[febo_seq.length - 1] + febo_seq[febo_seq.length -2]);
-    }
-    else{
-        febo_seq.pop();
-        check = false;
-    }  
-    }
-    console.log("Febonacci:",febo_seq.toString());
+const subPassword=(input,num)=>{
+return input.charAt(Math.floor(Math.random()*num))
 }
 
 
+// The fibonacci calculator 
+
+const fibonacci=()=>{
+   let inputNum = promptWindow('Please enter the fibonacci')
+   if(!patternChecker(inputNum))console.log('please inter the right Input');
+   else{
+       let fib=[0,1]
+       for(let i=0;i<parseInt(inputNum)-1;i++){
+       fib.push((fib[i]+fib[i+1]))
+       console.log(fib[i]);
+    }}
+}
+
+// generic prompt
 
 const promptWindow=(title)=>prompt(title)
-// check something called regex(regular expressions)
-const regex=/^[0-9]{1,14}$/
 
-// you have to
+// pattern checker
+
 const patternChecker=(inputValue)=>{
   return regex.test(inputValue)
 }
@@ -49,7 +48,7 @@ const patternChecker=(inputValue)=>{
 
 // factorial calculator
 
-const factorial_Of = ()=>{
+const factorial = ()=> {
 let input = promptWindow("Factorial of ");
  if(!patternChecker(input)){
     alert('Please enter the right input')
@@ -60,19 +59,16 @@ let input = promptWindow("Factorial of ");
 }
 }
 
+// palindrome checker
 
 const isPalindrome=()=>{
     let input = promptWindow('Please Enter any word')
-    let inputArray=input.split('')
-    let reverseWord=''
-    let reversedArray=inputArray.reverse()
-    for(let i=0;i<reversedArray.length;i++){
-        reverseWord+=reversedArray[i]
-    }
-
+    let reverseWord=input.split('').reverse().join('')
     if(input===reverseWord){
        console.log(`${input} is palindrome`); 
     }else  console.log(`${input} isn't palindrome`);
-
 }
+
+
+
 
