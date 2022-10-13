@@ -6,6 +6,17 @@ const number = "0123456789"
 const symbol='!@#$%&*{}[]'
 // password generator
 
+// generic prompt
+
+const promptWindow=(title)=>prompt(title)
+
+// pattern checker
+
+const patternChecker=(inputValue)=>{
+  return regex.test(inputValue)
+}
+
+
 const passwordGenerator=()=>{
    
 let password = [];
@@ -35,15 +46,6 @@ const fibonacci=()=>{
     }}
 }
 
-// generic prompt
-
-const promptWindow=(title)=>prompt(title)
-
-// pattern checker
-
-const patternChecker=(inputValue)=>{
-  return regex.test(inputValue)
-}
 
 
 // factorial calculator
